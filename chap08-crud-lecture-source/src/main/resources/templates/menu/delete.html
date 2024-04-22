@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:include="common/header.html"></div>
+    <h3>선택 메뉴 삭제</h3>
+<form action="/menu/delete" method="post">
+    <label>삭제할 메뉴 코드 : </label><input type="number" name="code">
+    <input type="submit" name="삭제">
+    </form>
+
+    <script>
+        fetch("/menu/category")
+            .then(res => res.json())
+            .then(data => {
+                const $categoryCode = document.getElementById("categoryCode") // $ 단순히 변수 선언
+
+                for (let index in data) {
+                    const $option = document.createElement('option');
+                    $option.value = data[index].code;
+                    $option.textContent = data[index].name;
+
+                    $categoryCode.appendChild($option);
+                }
+            });
+    </script>
+</body>
+</html>
