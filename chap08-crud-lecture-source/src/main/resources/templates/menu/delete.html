@@ -11,21 +11,5 @@
     <label>삭제할 메뉴 코드 : </label><input type="number" name="code">
     <input type="submit" name="삭제">
     </form>
-
-    <script>
-        fetch("/menu/category")
-            .then(res => res.json())
-            .then(data => {
-                const $categoryCode = document.getElementById("categoryCode") // $ 단순히 변수 선언
-
-                for (let index in data) {
-                    const $option = document.createElement('option');
-                    $option.value = data[index].code;
-                    $option.textContent = data[index].name;
-
-                    $categoryCode.appendChild($option);
-                }
-            });
-    </script>
 </body>
 </html>

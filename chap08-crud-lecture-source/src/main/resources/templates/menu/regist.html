@@ -22,8 +22,10 @@
 
     <script>
         fetch("/menu/category")
+            //
             .then(res => res.json())
             .then(data => {
+                // 카테고리 코드라는 id를 가져옴
                 const $categoryCode = document.getElementById("categoryCode") // $ 단순히 변수 선언
 
                 for (let index in data) {
@@ -31,6 +33,7 @@
                 $option.value = data[index].code;
                 $option.textContent = data[index].name;
 
+                // node객체만 자식요소(하나의 노드만)로 추가
                 $categoryCode.appendChild($option);
             }
         });
